@@ -1,0 +1,15 @@
+<h1>Editing Vote #<%= @vote.id %></h1>
+
+
+<%= form_tag(vote_url(@vote), method: 'put') do %>
+
+  <div>
+    <%= label_tag :question_id %><br />
+    <%= number_field_tag :question_id, @vote.question_id %>
+  </div>
+  
+  <div>
+    <%= submit_tag "Update Vote" %>
+  </div>
+
+<% end %>

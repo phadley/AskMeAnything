@@ -1,0 +1,20 @@
+<h1>New Question for <%= Person.find_by_id(params[:pid]).name %></h1>
+
+
+<%= form_tag(questions_url, method: 'post') do %>
+
+
+  <div>
+    <%= label_tag :q %><br />
+    <%= text_field_tag :q %>
+  </div>
+
+  <div>
+    <%= hidden_field_tag :votecount %>
+  </div>
+
+
+  <div>
+    <%= submit_tag "Create Question" %> <%= link_to "Cancel", '/' %>
+  </div>
+<% end %>

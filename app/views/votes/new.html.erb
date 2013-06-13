@@ -1,0 +1,15 @@
+<h1>New Vote</h1>
+
+
+<%= form_tag(votes_url, method: 'post') do %>
+
+  <div>
+    <%= label_tag :question_id %><br />
+    <%= select_tag :question_id,
+                    options_from_collection_for_select(Question.all, :id, :q) %>
+  </div>
+
+  <div>
+      <%= submit_tag "Create Vote" %> <%= link_to "Cancel", '/' %>
+  </div>
+<% end %>

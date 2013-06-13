@@ -1,0 +1,34 @@
+<h1>User #<%= @user.id %></h1>
+
+<p>
+  <b>Name:</b>
+  <%= @user.name %>
+</p>
+
+<p>
+  <b>Password:</b>
+  <%= @user.password %>
+</p>
+
+<table>
+  <thead>
+  	<tr>
+  		<th>Questions asked by <%= @user.name %></th>
+  		<th># of Votes</th>
+	</tr>
+  </thead>
+  <tbody>
+  <% @questions.each do |question| %>
+    <tr>
+      <% if question.user_id == @user.id %>
+      	<td>
+			<%= question.q %>
+		</td>
+		<td>
+			<%= question.votecount %> Votes
+		</td>
+		<% end %>
+	</tr>
+	<% end %>
+</tbody>
+</table>

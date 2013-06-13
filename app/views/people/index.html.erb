@@ -1,0 +1,28 @@
+<h1>Celebrities</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Picture</th>
+      <th>Name</th>
+      <th>Title</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% @people.each do |person| %>
+    <tr>
+      <td><%= image_tag(person.imagelink) %></td>
+      <td><h3><%= person.name %><h3></td>
+      <td><%= person.title %></td>
+      <td><%= link_to 'See questions', person_url(person) %></td>
+
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br>
+<p><%= link_to 'Add a New Person', new_person_url %></p>

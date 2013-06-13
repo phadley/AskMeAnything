@@ -1,0 +1,56 @@
+<br><%= image_tag(@person.imagelink) %>
+
+<h1><%= @person.name %></h1>
+
+<h2>
+  <b>Title:</b>
+  <%= @person.title %>
+</h2>
+
+<p>Only <b><font size="4.5">4 days</font></b> left to ask a question!  |  <%= link_to "See Previous Answers", answers_url %></p>
+
+
+<% if session["user_id"] %>
+    <h3><%= link_to "Ask Your Own Question", new_question_url %></h3>
+  <% else %>
+  	<h3><%= link_to "Ask Your Own Question", '/login' %></h3>
+<% end %>
+
+<table>
+  <thead>
+  	<tr>
+  		<th># of Votes</th>
+      <th>Questions for <%= @person.name %></th>	
+	</tr>
+  </thead>
+  <tbody>
+  <% @questions.each do |question| %>
+    <tr>
+      <% if question.people_id == @person.id %>
+      	<% @qq = question.id %>
+        <td><%= question.votecount %> Votes</td>
+        <td><%= question.q %></td>
+		    <% if session["user_id"].present? %>
+          <% x = Vote.find_all_by_question_id(@qq) %>
+          <% x.each do |xcheck| %>
+            <% if xcheck.present? == true && xcheck.user_id == session["user_id"] %>
+              <% @voted = 1 %>
+            <% end %>
+        <% end %>
+          <% if @voted == 1 %>
+            <td>You Voted</td>
+            <% @voted = 0 %>
+          <% else %>
+            <td><%= form_tag("/people/#{@person.id}/questions/#{question.id}/votes", method: 'post') do %>
+            <%= submit_tag "Vote" %></td>
+  </div>
+<% end %></td>
+          <% end %>
+      <% else %>
+        <td><%= link_to "Vote Up", '/login' %></td>
+      <% end %>
+	</tr>
+  <% end %>
+<% end %>
+</tbody>
+</table>

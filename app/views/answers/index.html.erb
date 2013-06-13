@@ -1,0 +1,31 @@
+<h1>Answers</h1>
+
+<p><%= link_to 'Add a New Answer', new_answer_url %></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Person</th>
+      <th>Question/Answer</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% @answers.each do |answer| %>
+    <tr>
+      <td><%= @person.name %></td>
+      <td><%= answer.a %></td>
+    </tr>
+    <tr>
+      <td><%= @person.name %></td>
+      <td><%= answer.question.q %></td>
+
+
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+

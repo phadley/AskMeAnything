@@ -1,0 +1,22 @@
+<h1>New Answer</h1>
+
+
+<%= form_tag(answers_url, method: 'post') do %>
+
+
+  <div>
+    <%= label_tag :a %><br />
+    <%= text_field_tag :a %>
+  </div>
+
+  <div>
+    <%= label_tag :question_id %><br />
+    <%= select_tag :question_id,
+                    options_from_collection_for_select(Question.where(people_id: params[:pid]), :id, :q) %>
+  </div>
+
+
+  <div>
+    <%= submit_tag "Create Answer" %> <%= link_to "Cancel", '/' %>
+  </div>
+<% end %>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ask Me Anything</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+  <header>
+    <h1><font color=#808080>Ask Me Anything</font></h1>
+    <h3><font color=#808080> The crowd sourced interview app where you can ask a question, and the crowd will vote it up!</font></h3>
+    <nav>
+      <%= link_to "Home", '/' %> |
+
+      <% if session["user_id"].present? %>
+        Hello, <%= User.find_by_id(session["user_id"]).name %>!
+        <%= link_to "Sign Out", "/logout" %>
+      <% else %>
+        <%= link_to "Sign Up", '/users/new' %>
+        <%= link_to "Login", '/login' %>
+      <% end %>
+
+  </header>
+
+  <div class="notice"><%= notice %></div>
+
+  <%= yield %>
+
+</body>
+</html>

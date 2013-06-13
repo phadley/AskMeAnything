@@ -1,0 +1,25 @@
+<h1>Editing Person #<%= @person.id %></h1>
+
+
+<%= form_tag(person_url(@person), method: 'put') do %>
+
+  <div>
+    <%= label_tag :name %><br />
+    <%= text_field_tag :name, @person.name %>
+  </div>
+
+  <div>
+    <%= label_tag :title %><br />
+    <%= text_field_tag :title, @person.title %>
+  </div>
+
+   <div>
+    <%= label_tag :imagelink %><br />
+    <%= text_field_tag :imagelink, @person.imagelink %>
+  </div>
+
+  <div>
+    <%= submit_tag "Update Person" %>
+  </div>
+
+<% end %>

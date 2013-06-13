@@ -1,0 +1,22 @@
+<h1>Editing Answer #<%= @answer.id %></h1>
+
+
+<%= form_tag(answer_url(@answer), method: 'put') do %>
+
+  <div>
+    <%= label_tag :a %><br />
+    <%= text_field_tag :a, @answer.a %>
+  </div>
+
+  <div>
+    <%= label_tag :question_id %><br />
+    <%= select_tag :question_id,
+                    options_from_collection_for_select(Question.where(people_id: params[:pid]), :id, :q) %>
+  </div>
+
+  
+  <div>
+    <%= submit_tag "Update Answer" %>
+  </div>
+
+<% end %>
