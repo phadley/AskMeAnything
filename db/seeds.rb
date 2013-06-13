@@ -102,8 +102,8 @@ puts "There are now #{Question.count} Questions."
 
   t = Answer.new
   t.a = "Kellogg offers a unique culture of collaboration, and we are constantly updating our curriculm.  We even recently added a coding class that has gained rave reviews!"
-  t.people_id = 1
+  t.people_id = 2
   t.question_id = 4
   t.save
 
-puts "There are now #{Question.count} Questions."
+puts "There are now #{Answer.count} Questions."
